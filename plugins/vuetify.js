@@ -3,7 +3,7 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 
 const defaultTheme = {
-  dark: false,
+  dark: true,
   colors: {
     white: '#FFFFFF',
     gray100: '#e1e1e6',  

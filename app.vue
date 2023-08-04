@@ -8,8 +8,7 @@
 
 <style scoped lang="scss">
 .app {
-  background: rgb(var(--v-theme-gray900));
+  background: rgb(var(--v-theme-gray950));
   color: rgb(var(--v-theme-white));
-  margin: 80px 0 0 0;
 }
 </style>

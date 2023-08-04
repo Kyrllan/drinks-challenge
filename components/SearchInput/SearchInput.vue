@@ -2,10 +2,11 @@
     <v-text-field 
         color="violet500" 
         variant="outlined" 
-        label="Pesquisar" 
+        label="Search" 
         prepend-inner-icon="mdi-magnify"
         density="compact"
         clearable
         clear-icon="mdi-close"
+        hide-details
     ></v-text-field>
 </template>
