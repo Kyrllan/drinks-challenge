@@ -1,0 +1,11 @@
+<template>
+    <v-text-field 
+        color="violet500" 
+        variant="outlined" 
+        label="Pesquisar" 
+        prepend-inner-icon="mdi-magnify"
+        density="compact"
+        clearable
+        clear-icon="mdi-close"
+    ></v-text-field>
+</template>
