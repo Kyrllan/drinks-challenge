@@ -1,23 +1,21 @@
 <template>
     <v-container class="content">
-        <v-row>
-            <v-col cols="12" sm="12" md="6">
-                <SearchInput v-model="search"/>
-            </v-col>
-            <v-col cols="12" sm="12" md="6">
-                <SelectCat @input="onSelectedCategorie($event)" />
-            </v-col>
-        </v-row>
-        <v-row class="drink-table-row">
-            <v-col cols="12">
-                <DrinkTable v-if="drinks.length > 0" :items="drinks" />
-            </v-col>
-         </v-row>
+        <div class="content-inputs">
+            <SearchInput class="content-input" v-model="search"/>
+            <SelectCat class="content-input" @input="onSelectedCategorie($event)" />
+        </div>
+        <div class="content-table">
+            <DrinkTable v-if="drinks.length > 0" :items="searchedDrinks" :loading="loading" />
+            <div v-else class="select-category-alert">
+                <v-icon>mdi-alert-circle-outline</v-icon>
+                <span class="pl-2">No category selected</span>
+            </div>
+        </div>
     </v-container>
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref, computed} from 'vue'
 
 interface Drink {
     strDrink: String,
@@ -28,6 +26,16 @@ interface Drink {
 const search = ref('')
 const drinks = ref<Drink[]>([])
 let loading = ref(false)
+
+const searchedDrinks = computed(() => {
+    if (search.value) {
+        return drinks.value.filter((drink: Drink) => {
+            return drink.strDrink.toLowerCase().includes(search.value.toLowerCase());
+        });
+    }
+    return drinks.value
+})
+
 
 function onSelectedCategorie(categorie: String) {
     getDrinksByCategorie(categorie)
@@ -58,9 +66,42 @@ async function getDrinksByCategorie(categorie: String) {
   height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
+
+  .content-inputs {
+    display: flex;
+
+    .content-input {
+        padding: 0 0.3rem;
+        width: 100%;
+    }
+  }
+  .content-table {
+      margin-top: 1rem;
+      overflow-y: auto;
+
+      .select-category-alert{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 3rem;
+        border-radius: 8px;
+        margin: 0.3rem;
+        background: rgb(var(--v-theme-gray300), 0.4);
+      }
+  }
 }
-.drink-table-row {
-  flex-grow: 1;
-  overflow-y: auto;
+
+@media screen and (max-width: 660px) {
+    .content-inputs {
+    display: flex;
+    flex-direction: column;
+
+    .content-input {
+        margin: 0.4rem 0;
+        width: 100%;
+    }
+  }
 }
+
+
 </style>
