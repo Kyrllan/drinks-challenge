@@ -11,7 +11,7 @@
                 <span class="pl-2">No category selected</span>
             </div>
         </div>
-        <DrinkModal v-model="detailsDialog" :item="drinkDetails" @close="detailsDialog = false" />
+        <DrinkModal v-model="detailsDialog" :item="drinkDetails" @close="detailsDialog = false" />    
     </v-container>
 </template>
 
