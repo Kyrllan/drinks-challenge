@@ -3,23 +3,12 @@
         <v-container class="d-flex align-center">
             <span @click="router.push('/')" class="title">Drink Challenge</span>
             <v-spacer></v-spacer>
-            <v-tooltip>
-                <template v-slot:activator="{ props }">
-                    <v-btn icon v-bind="props" @click="router.push('/favorites')">
-                        <v-icon color="amber500" size="36">mdi-star-face</v-icon>
-                    </v-btn>
-                    <v-badge 
-                        v-show="store.favorites.length > 0"
-                        color="violet500" 
-                        :content="store.favorites.length" 
-                        stacked 
-                        offset-x="8"
-                        offset-y="12"
-                        >
-                    </v-badge>
-                </template>
-                <span class="tooltip-text">Favorites</span>
-            </v-tooltip>
+            <v-btn icon @click="router.push('/favorites')">
+                <v-icon color="amber500" size="36">mdi-star-face</v-icon>
+            </v-btn>
+            <v-badge v-show="store.favorites.length > 0" color="violet500" :content="store.favorites.length" stacked
+                offset-x="8" offset-y="12">
+            </v-badge>
         </v-container>
     </v-app-bar>
 </template>
