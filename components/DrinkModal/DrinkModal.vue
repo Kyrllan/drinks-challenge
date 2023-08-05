@@ -7,9 +7,6 @@
       <div class="card-content">
         <div class="card-img">
           <img class="drink-img" :src="item.strDrinkThumb" :alt="item.strImageAttribution">
-          <!--           <v-btn class="fav-btn" @click.stop="$emit('close')">
-            <v-icon size="50">mdi-star</v-icon>
-          </v-btn> -->
         </div>
 
         <h2>{{ item.strDrink }}</h2>
@@ -60,18 +57,6 @@ const { mobile } = useDisplay()
       width: 400px;
       height: 400px;
     }
-
-    /* 
-
-    .fav-btn {
-      position: relative;
-      bottom: 0;
-      z-index: 9999999;
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-      color: red;
-    } */
   }
 
   .card-content {
@@ -125,4 +110,5 @@ const { mobile } = useDisplay()
       }
     }
   }
-}</style>
+}
+</style>

@@ -16,10 +16,7 @@
 
 <script setup lang="ts">
 import {ref, onMounted} from 'vue'
-
-interface Category {
-    strCategory: string;
-}
+import { Category } from '@/models/Category'
 
 let drinkCategories = ref<Category[]>([])
 

@@ -10,6 +10,7 @@ const config: NuxtConfig = {
     transpile: ['vuetify'],
   },
   modules: [
+    '@pinia/nuxt',
     ['@nuxtjs/google-fonts', {
       families: {
         'Roboto': true,
