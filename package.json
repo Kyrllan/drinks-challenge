@@ -20,6 +20,7 @@
     "@mdi/font": "^7.2.96",
     "@nuxtjs/google-fonts": "^3.0.2",
     "@pinia/nuxt": "^0.4.11",
+    "nuxt-snackbar": "^1.0.3",
     "pinia": "^2.1.6",
     "vite-plugin-vuetify": "^1.0.2",
     "vue3-lottie": "^3.0.0",

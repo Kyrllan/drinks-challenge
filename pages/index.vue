@@ -25,10 +25,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed} from "vue";
 import { baseUrl } from "@/constants/constants";
 import { Drink } from "@/models/Drink";
 import { DrinkDetails } from "@/models/DrinkDetails";
+import { useCategoryStore } from "@/store/category";
 
 const search = ref("");
 const drinks = ref<Drink[]>([]);
@@ -42,6 +43,7 @@ let drinkDetails = ref<DrinkDetails>({
 });
 let loading = ref(false);
 let detailsDialog = ref(false);
+const snackbar = useSnackbar();
 
 const searchedDrinks = computed(() => {
   if (search.value) {
@@ -52,21 +54,22 @@ const searchedDrinks = computed(() => {
   return drinks.value;
 });
 
-function onSelectedCategorie(categorie: String) {
+const store = useCategoryStore();
+
+function onSelectedCategorie(categorie: string) {
   getDrinksByCategorie(categorie);
+  store.setCategory(categorie)
 }
 
-async function getDrinksByCategorie(categorie: String) {
+async function getDrinksByCategorie(categorie: string) {
   if (categorie) {
     try {
       loading.value = true;
-      const response = await fetch(
-        `${baseUrl}/filter.php?c=${categorie}`
-      );
+      const response = await fetch(`${baseUrl}/filter.php?c=${categorie}`);
       const data = await response.json();
       drinks.value = data.drinks;
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      snackbar.add({ type: "error", text: error.message });
     } finally {
       loading.value = false;
     }
@@ -78,16 +81,15 @@ async function getDrinksByCategorie(categorie: String) {
 
 async function getDringById(item: Drink) {
   try {
-    const response = await fetch(
-      `${baseUrl}/lookup.php?i=${item.idDrink}`
-    );
+    const response = await fetch(`${baseUrl}/lookup.php?i=${item.idDrink}`);
     const data = await response.json();
     drinkDetails.value = data.drinks[0];
     detailsDialog.value = true;
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    snackbar.add({ type: "error", text: error.message });
   }
 }
+
 </script>
 
 <style scoped lang="scss">

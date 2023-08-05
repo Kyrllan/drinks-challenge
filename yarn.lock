@@ -572,7 +572,7 @@
     which "^3.0.1"
     ws "^8.13.0"
 
-"@nuxt/kit@^3.5.0", "@nuxt/kit@^3.6.5", "@nuxt/kit@3.6.5":
+"@nuxt/kit@^3.2.3", "@nuxt/kit@^3.5.0", "@nuxt/kit@^3.6.5", "@nuxt/kit@3.6.5":
   version "3.6.5"
   resolved "https://registry.npmjs.org/@nuxt/kit/-/kit-3.6.5.tgz"
   integrity sha512-uBI5I2Zx6sk+vRHU+nBmifwxg/nyXCGZ1g5hUKrUfgv1ZfiKB8JkN5T9iRoduDOaqbwM6XSnEl1ja73iloDcrw==
@@ -4767,6 +4767,15 @@ nuxi@3.6.5:
   optionalDependencies:
     fsevents "~2.3.2"
 
+nuxt-snackbar@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/nuxt-snackbar/-/nuxt-snackbar-1.0.3.tgz"
+  integrity sha512-FoS0An/0L+Cx0gz8sH6P2oW4G7uIcuqEEpgIOTmcb1a/2nyXpTtteVIDiIYgp00vJonV3Q/0Y2jpjcbmR+1yDg==
+  dependencies:
+    "@nuxt/kit" "^3.2.3"
+    defu "^6.1.2"
+    vue3-snackbar "^2.1.5"
+
 nuxt@^3.6.5:
   version "3.6.5"
   resolved "https://registry.npmjs.org/nuxt/-/nuxt-3.6.5.tgz"
@@ -6220,6 +6229,11 @@ through@^2.3.8:
   resolved "https://registry.npmjs.org/through/-/through-2.3.8.tgz"
   integrity sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==
 
+tiny-emitter@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/tiny-emitter/-/tiny-emitter-2.1.0.tgz"
+  integrity sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==
+
 tiny-invariant@^1.1.0:
   version "1.3.1"
   resolved "https://registry.npmjs.org/tiny-invariant/-/tiny-invariant-1.3.1.tgz"
@@ -6698,6 +6712,11 @@ vue-router@^4.1.0, vue-router@^4.2.4:
     "@vue/server-renderer" "3.3.4"
     "@vue/shared" "3.3.4"
 
+vue3-icon@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/vue3-icon/-/vue3-icon-2.1.0.tgz"
+  integrity sha512-cnFiGAEwzp/KQKody2Yj8cBDP4Kez0AUp5mDnp052FA1fECl8a9uYUKLaeRdH0JakmZ7Jfp3tdHbpBEWF9sgBA==
+
 vue3-lottie@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/vue3-lottie/-/vue3-lottie-3.0.0.tgz"
@@ -6705,6 +6724,15 @@ vue3-lottie@^3.0.0:
   dependencies:
     lodash-es "^4.17.21"
     lottie-web "5.12.2"
+
+vue3-snackbar@^2.1.5:
+  version "2.1.7"
+  resolved "https://registry.npmjs.org/vue3-snackbar/-/vue3-snackbar-2.1.7.tgz"
+  integrity sha512-G0xkvRS3/efWwlTiI+kuJw9CHn0B1cSTQoM2ONuyLVRK6Vv9jBf6I0HInvuLN0S+Ru+0TnWe24AiAw9LzlN4Bg==
+  dependencies:
+    tiny-emitter "^2.1.0"
+    vite-plugin-vuetify "^1.0.2"
+    vue3-icon "^2.0.0"
 
 vuetify@^3.0.0-beta.4, vuetify@^3.3.10:
   version "3.3.10"

@@ -2,6 +2,7 @@
   <v-app class="app" theme="defaultTheme">
     <AppBar />
     <NuxtPage />
+    <NuxtSnackbar />
   </v-app>
 </template>
 

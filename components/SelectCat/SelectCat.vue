@@ -20,11 +20,16 @@ import { Category } from "@/models/Category";
 import { baseUrl } from "@/constants/constants";
 
 let drinkCategories = ref<Category[]>([]);
+const snackbar = useSnackbar();
 
 async function getCategories() {
-  const response = await fetch(`${baseUrl}/list.php?c=list`);
-  const data = await response.json();
-  drinkCategories.value = data.drinks;
+  try {
+    const response = await fetch(`${baseUrl}/list.php?c=list`);
+    const data = await response.json();
+    drinkCategories.value = data.drinks;
+  } catch (error: any) {
+    snackbar.add({ type: "error", text: error.message });
+  }
 }
 
 onMounted(async () => {

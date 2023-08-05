@@ -44,6 +44,7 @@ let drinkDetails = ref<DrinkDetails>({
   strCategory: "",
 });
 let detailsDialog = ref(false);
+const snackbar = useSnackbar();
 
 async function getDringById(item: Drink) {
   try {
@@ -51,8 +52,8 @@ async function getDringById(item: Drink) {
     const data = await response.json();
     drinkDetails.value = data.drinks[0];
     detailsDialog.value = true;
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
+    snackbar.add({ type: "error", text: error.message });
   }
 }
 </script>
@@ -69,6 +70,7 @@ async function getDringById(item: Drink) {
 }
 
 .fav-grid {
+  padding-top: 1rem;
   max-width: 100%;
   margin: 0 auto;
   display: grid;

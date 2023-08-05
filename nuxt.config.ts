@@ -10,6 +10,7 @@ const config: NuxtConfig = {
     transpile: ['vuetify'],
   },
   modules: [
+    'nuxt-snackbar',
     '@pinia/nuxt',
     ['@nuxtjs/google-fonts', {
       families: {
@@ -25,6 +26,11 @@ const config: NuxtConfig = {
       'process.env.DEBUG': false,
     },
   },
+  snackbar: {
+    bottom: true,
+    right: true,
+    duration: 4000
+  }
 }
 
 export default config
