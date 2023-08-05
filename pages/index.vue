@@ -5,12 +5,21 @@
             <SelectCat class="content-input" @input="onSelectedCategorie($event)" />
         </div>
         <div class="content-table">
-            <DrinkTable v-if="drinks.length > 0" :items="searchedDrinks" :loading="loading" />
+            <DrinkTable v-if="drinks.length > 0" 
+                :items="searchedDrinks" 
+                :loading="loading" 
+                @input="getDringById"
+                />
             <div v-else class="select-category-alert">
                 <v-icon>mdi-alert-circle-outline</v-icon>
                 <span class="pl-2">No category selected</span>
             </div>
         </div>
+        <DrinkModal 
+            v-model="detailsDialog" 
+            :item="drinkDetails"
+            @close="detailsDialog = false"
+            />
     </v-container>
 </template>
 
@@ -23,9 +32,20 @@ interface Drink {
     idDrink: String,
 }
 
+interface DrinkDetails {
+    idDrink: String,
+    strDrink: String,
+    strDrinkThumb: String,
+    strImageAttribution: String
+    strInstructions: String,
+    strCategory: String,
+}
+
 const search = ref('')
 const drinks = ref<Drink[]>([])
+let drinkDetails = ref<DrinkDetails>({idDrink: '', strDrink: '', strDrinkThumb: '', strImageAttribution: '', strInstructions: '', strCategory: ''})
 let loading = ref(false)
+let detailsDialog = ref(false)
 
 const searchedDrinks = computed(() => {
     if (search.value) {
@@ -58,6 +78,21 @@ async function getDrinksByCategorie(categorie: String) {
     drinks.value = []
     return
 }
+
+async function getDringById(item: Drink){
+    try {
+            const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${item.idDrink}`);
+            const data = await response.json();
+            drinkDetails.value = data.drinks[0]
+            detailsDialog.value = true
+        } catch (error) {
+            console.log(error)
+        } 
+}
+
+
+
+
 </script>
 
 <style scoped lang="scss">

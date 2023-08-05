@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item, i) in items" :key="i" class="table-row">
+                <tr v-for="(item, i) in items" :key="i" class="table-row" @click.stop="$emit('input', item)">
                     <td class="d-flex align-center">
                         <img class="img" width="36" height="36" :src="item.strDrinkThumb" :alt="item.strDrink">
                         <span class="pl-2">

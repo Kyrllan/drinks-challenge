@@ -24,6 +24,16 @@ export default defineNuxtPlugin((nuxtApp) => {
     ssr: true,
     components,
     directives,
+    display: {
+      mobileBreakpoint: 'sm',
+      thresholds: {
+        xs: 0,
+        sm: 600,
+        md: 800,
+        lg: 1020,
+        xl: 1440,
+      },
+    },
     theme: {
       defaultTheme: 'defaultTheme',
       themes: {
