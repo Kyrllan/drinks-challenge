@@ -29,7 +29,6 @@ import { ref, computed} from "vue";
 import { baseUrl } from "@/constants/constants";
 import { Drink } from "@/models/Drink";
 import { DrinkDetails } from "@/models/DrinkDetails";
-import { useCategoryStore } from "@/store/category";
 
 const search = ref("");
 const drinks = ref<Drink[]>([]);
@@ -54,11 +53,9 @@ const searchedDrinks = computed(() => {
   return drinks.value;
 });
 
-const store = useCategoryStore();
 
 function onSelectedCategorie(categorie: string) {
   getDrinksByCategorie(categorie);
-  store.setCategory(categorie)
 }
 
 async function getDrinksByCategorie(categorie: string) {
