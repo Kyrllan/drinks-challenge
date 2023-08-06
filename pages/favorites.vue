@@ -64,7 +64,7 @@ async function getDringById(item: Drink) {
   height: calc(100vh - 80px);
 
   .title {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-weight: normal;
   }
 }
