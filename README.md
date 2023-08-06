@@ -2,6 +2,8 @@
 
 O projeto Drink Challenge é uma aplicação frontend desenvolvida como desafio tecnico usando a API TheCocktailDB(https://www.thecocktaildb.com/api.php) para obter informações sobre coquetéis. A API TheCocktailDB fornece dados sobre receitas de coquetéis, ingredientes, categorias, filtros e muito mais.
 
+Demo: https://drinks-challenge.vercel.app/
+
 
 ## Instruções de Instalação e Execução
 
@@ -9,21 +11,24 @@ Certifique-se de ter o Node.js instalado em sua máquina. Caso não tenha, faça
 
 Clone este repositório em seu ambiente local:
 
-bash
-Copy code
-git clone https://github.com/seu-usuario/cocktaildb-explorer.git
-cd cocktaildb-explorer
+```
+git clone https://github.com/Kyrllan/drinks-challenge.git
+cd drinks-challenge
+```
+
 Instale as dependências do projeto usando o gerenciador de pacotes npm:
 
-bash
-Copy code
+```
 npm install
+```
+
 Inicie o servidor de desenvolvimento para executar a aplicação:
 
-bash
-Copy code
+```
 npm run dev
-A aplicação estará disponível em http://localhost:3000. Acesse essa URL em seu navegador para visualizar a CocktailDB Explorer.
+```
+
+A aplicação estará disponível em http://localhost:3000. Acesse essa URL em seu navegador para visualizar a aplicação.
 
 
 
