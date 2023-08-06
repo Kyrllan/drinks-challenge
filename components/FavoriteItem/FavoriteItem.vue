@@ -6,14 +6,13 @@
         {{ item.strDrink }}
       </span>
     </div>
-    <v-btn class="fav-btn" @click.stop="removeFavorite(item)" icon color="violet500" flat>
+    <v-btn class="fav-btn" @click.stop="$emit('remove', item)" icon color="violet500" flat>
       <v-icon size="18" >mdi-close</v-icon>
     </v-btn>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useFavoriteStore } from "../../store/favorites"
 import { Drink } from "../../models/Drink";
 
 const props = defineProps({
@@ -23,12 +22,6 @@ const props = defineProps({
     default: () => { },
   },
 });
-
-const store = useFavoriteStore();
-
-function removeFavorite(item: Drink) {
-  store.setFavorite(item)
-}
 
 </script>
 

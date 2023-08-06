@@ -12,6 +12,7 @@
         :key="i"
         :item="item"
         @open="getDringById"
+        @remove="removeFavorite"
       />
     </div>
     <DrinkModal
@@ -31,9 +32,11 @@ import { DrinkDetails } from "~/models/DrinkDetails";
 import { Drink } from "~/models/Drink";
 import { baseUrl } from "@/constants/constants";
 
-const store = useFavoriteStore();
+const store = useFavoriteStore(); //instancia da store onde contem os favoritos armazenados
 
-const router: Router = useRouter();
+const router: Router = useRouter(); //instancia do router 
+
+const snackbar = useSnackbar(); //Plugin de snackbar utilizado pra apresentar alertas na aplicação.
 
 let drinkDetails = ref<DrinkDetails>({
   idDrink: "",
@@ -44,8 +47,8 @@ let drinkDetails = ref<DrinkDetails>({
   strCategory: "",
 });
 let detailsDialog = ref(false);
-const snackbar = useSnackbar();
 
+// método que busca da api os detalhes do drink selecionado e apesenta no modal
 async function getDringById(item: Drink) {
   try {
     const response = await fetch(`${baseUrl}/lookup.php?i=${item.idDrink}`);
@@ -55,6 +58,11 @@ async function getDringById(item: Drink) {
   } catch (error: any) {
     snackbar.add({ type: "error", text: error.message });
   }
+}
+
+// método que remove o favorito da store
+function removeFavorite(item: Drink) {
+  store.setFavorite(item)
 }
 </script>
 

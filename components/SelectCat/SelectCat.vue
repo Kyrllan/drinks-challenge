@@ -2,7 +2,7 @@
   <v-select
     clearable
     label="Select Category"
-    :items="drinkCategories"
+    :items="items"
     variant="outlined"
     density="compact"
     color="violet500"
@@ -15,24 +15,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import { Category } from "@/models/Category";
-import { baseUrl } from "@/constants/constants";
-
-let drinkCategories = ref<Category[]>([]);
-const snackbar = useSnackbar();
-
-async function getCategories() {
-  try {
-    const response = await fetch(`${baseUrl}/list.php?c=list`);
-    const data = await response.json();
-    drinkCategories.value = data.drinks;
-  } catch (error: any) {
-    snackbar.add({ type: "error", text: error.message });
-  }
-}
-
-onMounted(async () => {
-  await getCategories();
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true,
+    default: [],
+  },
 });
 </script>

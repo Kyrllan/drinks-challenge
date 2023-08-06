@@ -2,7 +2,7 @@
   <v-container class="content">
     <div class="content-inputs">
       <SearchInput class="content-input" v-model="search" />
-      <SelectCat class="content-input" @input="onSelectedCategorie($event)" />
+      <SelectCat class="content-input" :items="drinkCategories" @input="onSelectedCategorie($event)" />
     </div>
     <div class="content-table">
       <DrinkTable
@@ -10,6 +10,7 @@
         :items="searchedDrinks"
         :loading="loading"
         @input="getDringById"
+        @setFavorite="setFavorite"
       />
       <div v-else class="select-category-alert">
         <v-icon>mdi-alert-circle-outline</v-icon>
@@ -25,10 +26,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed} from "vue";
+import { ref, computed, onMounted} from "vue";
 import { baseUrl } from "@/constants/constants";
 import { Drink } from "@/models/Drink";
 import { DrinkDetails } from "@/models/DrinkDetails";
+import { Category } from "@/models/Category";
+import { useFavoriteStore } from "@/store/favorites"
 
 const search = ref("");
 const drinks = ref<Drink[]>([]);
@@ -40,10 +43,15 @@ let drinkDetails = ref<DrinkDetails>({
   strInstructions: "",
   strCategory: "",
 });
+let drinkCategories = ref<Category[]>([]);
 let loading = ref(false);
 let detailsDialog = ref(false);
-const snackbar = useSnackbar();
 
+const store = useFavoriteStore(); //instancia da store onde contem os favoritos armazenados
+
+const snackbar = useSnackbar(); //plugin de snackbar utilizado pra apresentar alertas na aplicação.
+
+// dado computado que retorna somente os drinks pesquisados no campo de busca.
 const searchedDrinks = computed(() => {
   if (search.value) {
     return drinks.value.filter((drink: Drink) => {
@@ -53,11 +61,12 @@ const searchedDrinks = computed(() => {
   return drinks.value;
 });
 
-
+// ao selecionar uma categoria no componente SelectCat é disparado o método getDrinksByCategorie
 function onSelectedCategorie(categorie: string) {
   getDrinksByCategorie(categorie);
 }
 
+// método que busca da api a lista dos drinks pela categoria selecionada.
 async function getDrinksByCategorie(categorie: string) {
   if (categorie) {
     try {
@@ -76,6 +85,7 @@ async function getDrinksByCategorie(categorie: string) {
   return;
 }
 
+// método que busca da api os detalhes do drink selecionado e apesenta no modal
 async function getDringById(item: Drink) {
   try {
     const response = await fetch(`${baseUrl}/lookup.php?i=${item.idDrink}`);
@@ -86,6 +96,27 @@ async function getDringById(item: Drink) {
     snackbar.add({ type: "error", text: error.message });
   }
 }
+
+// método que gerencia os favoritos
+function setFavorite(item: Drink) {
+  store.setFavorite(item)
+}
+
+// método que busca a lista de categorias da api
+async function getCategories() {
+  try {
+    const response = await fetch(`${baseUrl}/list.php?c=list`);
+    const data = await response.json();
+    drinkCategories.value = data.drinks;
+  } catch (error: any) {
+    snackbar.add({ type: "error", text: error.message });
+  }
+}
+
+// hook que dispara o metodo getCategories() ao montar a tela
+onMounted(async () => {
+  await getCategories();
+});
 
 </script>
 

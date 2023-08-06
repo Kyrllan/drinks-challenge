@@ -21,7 +21,7 @@
             </span>
           </td>
           <td class="text-right">
-            <v-btn @click.stop="setFavorite(item)" icon size="small" color="transparent" flat>
+            <v-btn @click.stop="$emit('setFavorite', item)" icon size="small" color="transparent" flat>
               <v-icon size="18" :color="isFavorite(item) ? 'amber500': 'gray800'">mdi-star</v-icon>
             </v-btn>
           </td>
@@ -50,14 +50,9 @@ const props = defineProps({
 
 const store = useFavoriteStore();
 
-function setFavorite(item: Drink) {
-  store.setFavorite(item)
-}
-
 function isFavorite(item: Drink) {
   return store.favorites.some((obj: Drink) => obj.idDrink === item.idDrink)
 }
-
 </script>
 
 <style scoped lang="scss">
