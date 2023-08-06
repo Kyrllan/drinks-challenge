@@ -4,6 +4,22 @@ O projeto Drink Challenge é uma aplicação frontend desenvolvida como desafio 
 
 Demo: https://drinks-challenge.vercel.app/
 
+## Organização do Projeto
+
+- assets: Armazenado animation.json utilizado na animação de rota desconhecida da aplicação
+- components: Componentes reutilizaveis
+- constants: Armazenado as constantes da aplicação
+- models: Armazenado os Models/Interfaces TypeScript
+- pages: Páginas da aplicação
+  - index.vue: Página Home
+  - favorites.vue: Página de favoritos
+- plugins: Plugins da aplicação
+  - Vuetify: Biblioteca de UI para vueJs
+  - Vue3Lottie: Plugin de animação
+- store: Armazenamento de dados centralizados da aplicação (Pinia)
+- app.vue: Arquivo inicial da aplicação
+- error.vue: Página de tratamento caso usuario procure por uma página que não existe na aplicação
+
 
 ## Instruções de Instalação e Execução
 
@@ -69,4 +85,7 @@ A aplicação estará disponível em http://localhost:3000. Acesse essa URL em s
 ### Observação
 
 Utilizar NuxtJS :heavy_check_mark:
+
+
+    
 
