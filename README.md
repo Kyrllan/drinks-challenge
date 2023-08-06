@@ -1,63 +1,81 @@
-# Nuxt 3 Minimal Starter
+# Drink Challenge
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+O projeto Drink Challenge é uma aplicação frontend desenvolvida como desafio tecnico usando a API TheCocktailDB(https://www.thecocktaildb.com/api.php) para obter informações sobre coquetéis. A API TheCocktailDB fornece dados sobre receitas de coquetéis, ingredientes, categorias, filtros e muito mais.
 
-## Setup
 
-Make sure to install the dependencies:
+## Instruções de Instalação e Execução
 
-```bash
-# npm
+Certifique-se de ter o Node.js instalado em sua máquina. Caso não tenha, faça o download e instale a versão mais recente do Node.js em https://nodejs.org.
+
+Clone este repositório em seu ambiente local:
+
+bash
+Copy code
+git clone https://github.com/seu-usuario/cocktaildb-explorer.git
+cd cocktaildb-explorer
+Instale as dependências do projeto usando o gerenciador de pacotes npm:
+
+bash
+Copy code
 npm install
+Inicie o servidor de desenvolvimento para executar a aplicação:
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+bash
+Copy code
 npm run dev
+A aplicação estará disponível em http://localhost:3000. Acesse essa URL em seu navegador para visualizar a CocktailDB Explorer.
 
-# pnpm
-pnpm run dev
 
-# yarn
-yarn dev
-```
 
-## Production
 
-Build the application for production:
+Desafio para Frontend em VueJS!! :raised_hands:
 
-```bash
-# npm
-npm run build
+Para a resolução deste desafio, esperamos que você desenvolva uma interface contemplando os requisitos abaixo. O endpoint a ser utilizado será o [TheCocktailDB](https://www.thecocktaildb.com/api.php).
 
-# pnpm
-pnpm run build
+- Dado que sou um usuário eu quero visualizar as categorias de bebidas
+  - Ao escolher uma categoria eu devo visualizar a lista das bebidas dessa categoria.
 
-# yarn
-yarn build
-```
+- Dado que sou um usuário eu quero ver os detalhes da bebida.
+  - A aplicação deve apresentar a imagem da bebida escolhida;
+  - A aplicação deve apresentar a instrução da bebida escolhida.
 
-Locally preview production build:
+- Dado que sou um usuário eu quero pesquisar uma bebida específica através de um campo de busca.**(opcional)**
 
-```bash
-# npm
-npm run preview
+- Dado que sou um usuário eu posso favoritar uma bebida para facilmente acessá-la no futuro.**(opcional)**
 
-# pnpm
-pnpm run preview
+## Requisitos técnicos
 
-# yarn
-yarn preview
-```
+### Obrigatórios
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- Criar documentação assertiva para a execução e apresentação do projeto no README;
+- Utilizar typescript;
+- Criar nome para aplicação;
+- Tratamento básicos de erros da API;( 500, 400 )
+- Fácil de buildar e executar a aplicação para testes
+
+### Opcionais
+
+- Tratamento para rotas que não existem;
+- Escrever testes;
+- Aplicação deve ser responsiva;
+
+### Diferenciais
+
+- Documentar decisões tomadas durante o desafio técnico.
+- Paleta de cores única;
+- UX agradável;
+- Criar commits semânticos.
+
+### Observação
+
+Utilizar NuxtJS
+
+O objetivo principal deste desafio é avaliar as capacidades do candidato em:
+
+- Escrever código limpo;
+- Criatividade na criação do layout.
+- Raciocinio na forma de implementar
+- Dedicação e nível de capricho
+
+### Observações
+- Criar um repositório para enviar o teste
